@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ExpenseTracker</string>
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
+    <string name="username">Email</string>
+    <string name="password">Password</string>
+    <string name="verify_password">Verify Password</string>
+</resources>
