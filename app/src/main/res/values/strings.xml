@@ -5,4 +5,7 @@
     <string name="username">Email</string>
     <string name="password">Password</string>
     <string name="verify_password">Verify Password</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="new_expense_name">New Expense Name</string>
+    <string name="add_expense">Add Expense</string>
 </resources>

@@ -11,6 +11,9 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 
 class CreateAccountActivity: AppCompatActivity() {
     lateinit var mAuth: FirebaseAuth
@@ -49,6 +52,12 @@ class CreateAccountActivity: AppCompatActivity() {
         if (user != null) {
             var expensesIntent = Intent(this, ExpensesActivity::class.java)
             startActivity(expensesIntent)
+            var database = Firebase.database.reference
+            user.uid?.let { database.child("users").child(it).setValue(user.uid) }
+            val gson = Gson()
+            val arrayList =  ArrayList<String>()
+            database.child("users").child(user.uid).child("listJSON").setValue(gson.toJson(arrayList))
+
         }
     }
 }
