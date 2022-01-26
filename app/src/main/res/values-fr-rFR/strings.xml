@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Suivi des Dépenses</string>
+    <string name="create_account">Créer un Compte</string>
+    <string name="login">Connexion</string>
+    <string name="username">Email</string>
+    <string name="password">Mot de Passe</string>
+    <string name="verify_password">Vérifier le Mot de Passe</string>
+    <string name="total_expenses">Nombre de Dépenses</string>
+    <string name="new_expense_name">Nouvelle Dépense</string>
+    <string name="add_expense">Ajouter une Dépense</string>
+</resources>
