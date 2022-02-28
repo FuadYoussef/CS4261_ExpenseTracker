@@ -53,7 +53,7 @@ class CreateAccountActivity: AppCompatActivity() {
             user.uid?.let { database.child("users").child(it).setValue(user.uid)}
             val gson = Gson()
             val arrayList =  ArrayList<String>()
-            database.child("users").child(user.uid).child("listJSON").setValue(gson.toJson(arrayList))
+            database.child("users").child(user.uid).child("Groups").setValue(gson.toJson(arrayList))
 
         }
     }
