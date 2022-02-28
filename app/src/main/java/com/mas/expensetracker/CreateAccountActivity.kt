@@ -6,9 +6,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.ktx.database
@@ -50,10 +47,10 @@ class CreateAccountActivity: AppCompatActivity() {
 
     fun updateUI(user : FirebaseUser?) {
         if (user != null) {
-            var expensesIntent = Intent(this, ExpensesActivity::class.java)
+            var expensesIntent = Intent(this, GroupsActivity::class.java)
             startActivity(expensesIntent)
             var database = Firebase.database.reference
-            user.uid?.let { database.child("users").child(it).setValue(user.uid) }
+            user.uid?.let { database.child("users").child(it).setValue(user.uid)}
             val gson = Gson()
             val arrayList =  ArrayList<String>()
             database.child("users").child(user.uid).child("listJSON").setValue(gson.toJson(arrayList))

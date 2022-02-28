@@ -1,5 +1,6 @@
 package com.mas.expensetracker
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,7 +18,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 
-class ExpensesActivity: AppCompatActivity() {
+class GroupsActivity: AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
     private lateinit var userArray: ArrayList<String>
@@ -32,16 +33,16 @@ class ExpensesActivity: AppCompatActivity() {
         if (currentUser != null) {
 
             var userID = currentUser.uid
-            databaseRef.child("users").child(userID).child("listJSON").get().addOnSuccessListener {
+            databaseRef.child("Groups").get().addOnSuccessListener {
                 val gson = Gson() //https://howtodoinjava.com/gson/gson-parse-json-array/
                 val arrayListType = object : TypeToken<ArrayList<String>>() {}.type //https://www.bezkoder.com/kotlin-parse-json-gson/
-                userArray = gson.fromJson<ArrayList<String>>(it.value.toString(), arrayListType)
-                val arrayAdapter: ArrayAdapter<String> =
+                //userArray = gson.fromJson<ArrayList<String>>(it.value.toString(), arrayListType)
+                /*val arrayAdapter: ArrayAdapter<String> =
                     ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, userArray)
                 val listView = findViewById<ListView>(R.id.main_list_view)
-                listView.setAdapter(arrayAdapter)
-                val expenseCount = findViewById<TextView>(R.id.expense_value_label)
-                expenseCount.text = userArray.size.toString()
+                listView.setAdapter(arrayAdapter)*/
+                val asdf = it
+                print(asdf)
 
             }.addOnFailureListener{
                 Log.e("firebase", "Error getting data", it)
@@ -52,23 +53,8 @@ class ExpensesActivity: AppCompatActivity() {
 
     }
 
-    fun addExpense(view: View) {
-        val newExpenseET = findViewById<EditText>(R.id.new_expense_et)
-        userArray.add(newExpenseET.text.toString())
-        var mAuth = FirebaseAuth.getInstance()
-        var currentUser = mAuth.currentUser
-        if (currentUser != null) {
-
-            var userID = currentUser.uid
-            val gson = Gson()
-            databaseRef.child("users").child(userID).child("listJSON").setValue(gson.toJson(userArray))
-
-        }
-        val arrayAdapter: ArrayAdapter<String> =
-            ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, userArray)
-        val listView = findViewById<ListView>(R.id.main_list_view)
-        listView.setAdapter(arrayAdapter)
-        val expenseCount = findViewById<TextView>(R.id.expense_value_label)
-        expenseCount.text = userArray.size.toString()
+    fun goToCreateScreen(view: View) {
+        var createGroup = Intent(this, CreateGroupActivity::class.java)
+        startActivity(createGroup)
     }
 }
