@@ -2,7 +2,7 @@
     <string name="app_name">ExpenseTracker</string>
     <string name="create_account">Create Account</string>
     <string name="login">Login</string>
-    <string name="username">Email</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="verify_password">Verify Password</string>
     <string name="total_expenses">Total Expenses</string>
@@ -13,4 +13,5 @@
     <string name="group_description">Group Description</string>
     <string name="participants_hint">Participant Emails (separate by ,)</string>
     <string name="create_group">Create Group</string>
+    <string name="email">Email</string>
 </resources>
