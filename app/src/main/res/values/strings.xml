@@ -13,4 +13,7 @@
     <string name="group_description">Group Description</string>
     <string name="participants_hint">Participant Emails (separate by ,)</string>
     <string name="create_group">Create Group</string>
+    <string name="create_or_join_group">Create/Join Group</string>
+    <string name="join_group_hint">Group Key</string>
+    <string name="join_group">Join Group</string>
 </resources>
