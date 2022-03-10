@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -40,6 +37,15 @@ class GroupsActivity: AppCompatActivity() {
                     val arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myGroups)
                     val listView = findViewById<ListView>(R.id.main_list_view)
                     listView.setAdapter(arrayAdapter)
+
+                    listView.setOnItemClickListener{ parent, view, position, id ->
+                        val element = parent.getItemAtPosition(position).toString()// The item that was clicked
+                        val intent = Intent(this, GroupView::class.java)
+                        Log.i("GroupActivity", element)
+                        intent.putExtra("element",element) // Send group id to GroupView
+                        startActivity(intent)
+                    }
+
                 }.addOnFailureListener {
                     Log.e("firebase", "Error getting data1", it)
                 }

@@ -26,6 +26,9 @@
         <activity android:name=".CreateGroupActivity"
             android:exported="false">
         </activity>
+        <activity android:name=".GroupView"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
