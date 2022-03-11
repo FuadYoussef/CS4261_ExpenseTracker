@@ -8,7 +8,7 @@ class ExpenseList {
     val expenselist: ArrayList<Expense> = arrayListOf()
 
     fun add(toJson: Expense) {
-        expenselist!!.add(toJson)
+        expenselist.add(toJson)
     }
 }
 

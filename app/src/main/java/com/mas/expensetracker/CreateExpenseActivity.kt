@@ -62,7 +62,10 @@ class CreateExpenseActivity : AppCompatActivity() {
                     Log.i("CreateExpense","All Expenses" + expenseJson)
                     databaseRef.child("Groups").child(key).child("expenses").setValue(expenseJson)
                 }else{
-                    val expenseJson: String = gson.toJson(expense)
+
+                    var objectList = ExpenseList()
+                    objectList.add(expense)
+                    val expenseJson: String = gson.toJson(objectList)
                     databaseRef.child("Groups").child(key).child("expenses").setValue(expenseJson)
                 }
 
