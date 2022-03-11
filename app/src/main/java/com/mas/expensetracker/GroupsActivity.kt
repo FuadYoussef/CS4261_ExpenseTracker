@@ -22,7 +22,7 @@ class GroupsActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_expenses)
+        setContentView(R.layout.activity_groups)
         database = Firebase.database
         databaseRef = database.reference
         var mAuth = FirebaseAuth.getInstance()
@@ -39,10 +39,10 @@ class GroupsActivity: AppCompatActivity() {
                     listView.setAdapter(arrayAdapter)
 
                     listView.setOnItemClickListener{ parent, view, position, id ->
-                        val element = parent.getItemAtPosition(position).toString()// The item that was clicked
+                        val key = parent.getItemAtPosition(position).toString()// The item that was clicked
                         val intent = Intent(this, GroupView::class.java)
-                        Log.i("GroupActivity", element)
-                        intent.putExtra("element",element) // Send group id to GroupView
+                        Log.i("GroupActivity", key)
+                        intent.putExtra("key",key) // Send group id to GroupView
                         startActivity(intent)
                     }
 

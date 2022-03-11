@@ -29,6 +29,9 @@
         <activity android:name=".GroupView"
             android:exported="true">
         </activity>
+        <activity android:name=".CreateExpenseActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
