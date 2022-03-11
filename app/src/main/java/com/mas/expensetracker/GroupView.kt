@@ -19,7 +19,7 @@ class GroupView : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
     private lateinit var groupParticipants: ArrayList<String>
-    private lateinit var expenses: ExpenseList
+    private lateinit var expenseList: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +31,9 @@ class GroupView : AppCompatActivity() {
         Log.i("GroupView", "Received groupId " + key)
 
         databaseRef.child("Groups").child(key).child("participants").get().addOnSuccessListener {
-            val gson = Gson() //https://howtodoinjava.com/gson/gson-parse-json-array/
+            val gson = Gson()
             val arrayListType = object :
-                TypeToken<ArrayList<String>>() {}.type //https://www.bezkoder.com/kotlin-parse-json-gson/
+                TypeToken<ArrayList<String>>() {}.type
             groupParticipants = gson.fromJson<ArrayList<String>>(
                 it.value.toString(),
                 arrayListType
@@ -46,20 +46,20 @@ class GroupView : AppCompatActivity() {
         }.addOnFailureListener { e ->
             // Handle any errors
         }
-//        databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
+        databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
+            println(it.value.toString())
 //            if(it.value!=null){
-//                Log.i("GroupView","Pulled" + it.value)
 //                val gson = Gson()
-//                expenses = gson.fromJson(it.value.toString(), ExpenseList::class.java)
-//                Log.i("GroupView","expenses" + expenses)
-//                val arrayAdapter: ArrayAdapter<ExpenseList> =
-//                    ArrayAdapter<ExpenseList>(this, android.R.layout.simple_list_item_1, expenses)
+//                val arrayListType = object : TypeToken<ArrayList<String>>() {}.type
+//                expenseList = gson.fromJson<ArrayList<String>>(gson.toJson(it.value), arrayListType)
+//                val arrayAdapter: ArrayAdapter<String> =
+//                    ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, expenseList)
 //                val listView = findViewById<ListView>(R.id.expense_list_view)
 //                listView.setAdapter(arrayAdapter)
-//            }
-//        }.addOnFailureListener { e ->
-//            // Handle any errors
-//        }
+            //}
+        }.addOnFailureListener { e ->
+            // Handle any errors
+        }
     }
 
     fun goToGroupsScreen(view: View) {

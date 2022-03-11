@@ -51,30 +51,22 @@ class CreateExpenseActivity : AppCompatActivity() {
 
             databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
                 val gson = Gson()
-                val arrayListType = object :TypeToken<ArrayList<Expense>>() {}.type
-
                 if(it.value!=null){
-                    Log.i("CreateExpense","Pulled" + it.value)
-                    var objectList = gson.fromJson(it.value.toString(), ExpenseList::class.java)
-                    Log.i("CreateExpense","Pulled" + objectList)
-                    objectList.add(expense)
-                    val expenseJson: String = gson.toJson(objectList)
-                    Log.i("CreateExpense","All Expenses" + expenseJson)
-                    databaseRef.child("Groups").child(key).child("expenses").setValue(expenseJson)
+                    val expenseJson: String = gson.toJson(expense)
+                    var expenseList = it.value.toString()
+                    expenseList += expenseJson
+                    databaseRef.child("Groups").child(key).child("expenses").setValue(expenseList)
                 }else{
-
-                    var objectList = ExpenseList()
-                    objectList.add(expense)
-                    val expenseJson: String = gson.toJson(objectList)
-                    databaseRef.child("Groups").child(key).child("expenses").setValue(expenseJson)
+                    val expenseJson: String = gson.toJson(expense)
+                    val expenseList: ArrayList<String> = arrayListOf()
+                    expenseList.add(expenseJson)
+                    databaseRef.child("Groups").child(key).child("expenses").setValue(expenseList)
                 }
 
             }.addOnFailureListener {
                 Log.e("firebase", "Error getting data1", it)
             }
-//            val gson = Gson()
-//            val expenseJson: String = gson.toJson(expense)
-//            databaseRef.child("Groups").child(key).child("expenses").push().setValue(expenseJson)
+
 
 
             var groupViewIntent = Intent(this, GroupView::class.java)
