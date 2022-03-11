@@ -54,7 +54,7 @@ class CreateExpenseActivity : AppCompatActivity() {
                 if(it.value!=null){
                     val expenseJson: String = gson.toJson(expense)
                     var expenseList = it.value.toString()
-                    expenseList += expenseJson
+                    expenseList+=expenseJson
                     databaseRef.child("Groups").child(key).child("expenses").setValue(expenseList)
                 }else{
                     val expenseJson: String = gson.toJson(expense)

@@ -48,17 +48,18 @@ class GroupView : AppCompatActivity() {
         }
         databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
             println(it.value.toString())
-//            if(it.value!=null){
-//                val gson = Gson()
-//                val arrayListType = object : TypeToken<ArrayList<String>>() {}.type
-//                expenseList = gson.fromJson<ArrayList<String>>(gson.toJson(it.value), arrayListType)
-//                val arrayAdapter: ArrayAdapter<String> =
-//                    ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, expenseList)
-//                val listView = findViewById<ListView>(R.id.expense_list_view)
-//                listView.setAdapter(arrayAdapter)
-            //}
-        }.addOnFailureListener { e ->
-            // Handle any errors
+//        databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
+//            if(it.value.toString()!=null){
+//                println(it.value.toString())
+//                val gson = GsonBuilder().setLenient().create()
+//                val Model= gson.fromJson(it.value.toString(),Array<Expense>::class.java).toList()
+//
+//                for(expense in Model){
+//                    println(expense)
+//                }
+//            }
+//        }.addOnFailureListener { e ->
+//            // Handle any errors
         }
     }
 
