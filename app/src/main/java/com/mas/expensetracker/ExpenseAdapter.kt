@@ -38,9 +38,9 @@ class ExpenseAdapter(private val taskNames: ExpenseList) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.bind(taskNames[position])
         viewHolder.itemView.setOnClickListener { v->
-            val expense = taskNames[position].expenseName
+            val expense = taskNames[position]
             val intent = Intent(v.context, ManageExpenseActivity::class.java)
-            intent.putExtra("expense",expense) // Send selectedexpense
+            intent.putExtra("expense",expense)
             v.context.startActivity(intent)
         }
     }

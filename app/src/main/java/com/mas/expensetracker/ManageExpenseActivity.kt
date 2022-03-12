@@ -22,14 +22,23 @@ import com.google.gson.reflect.TypeToken
 class ManageExpenseActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
-    private lateinit var groupParticipants: ArrayList<String>
-    private lateinit var rvexpenseList: RecyclerView
+    private lateinit var pairs: ArrayList<Pair<String,Int>>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView( R.layout.activity_expense_view )
-        val expenseName = getIntent().getStringExtra("expense")
+        database = Firebase.database
+        databaseRef = database.reference
+
+        val expense = getIntent().getSerializableExtra("expense")as Expense //Passed in Expense Object
         val textView : TextView = findViewById(R.id.managed_expense_name)
-        textView.text=expenseName
+        textView.text= expense.expenseName
+
+        var participantExpenses = expense.participantExpenses.toList() //List of (email,total) for each participant
+
+//        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, participantExpenses)
+//        val listView = findViewById<ListView>(R.id.participant_expense_list_view)
+//        listView.setAdapter(arrayAdapter)
     }
 }
