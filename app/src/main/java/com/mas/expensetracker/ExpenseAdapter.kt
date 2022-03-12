@@ -1,10 +1,15 @@
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.mas.expensetracker.Expense
+import com.mas.expensetracker.GroupView
+import com.mas.expensetracker.ManageExpenseActivity
 import com.mas.expensetracker.R
 
 class ExpenseAdapter(private val taskNames: ExpenseList) :
@@ -32,9 +37,16 @@ class ExpenseAdapter(private val taskNames: ExpenseList) :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.bind(taskNames[position])
+        viewHolder.itemView.setOnClickListener { v->
+            val expense = taskNames[position].expenseName
+            val intent = Intent(v.context, ManageExpenseActivity::class.java)
+            intent.putExtra("expense",expense) // Send selectedexpense
+            v.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
         return taskNames.size
     }
+
 }

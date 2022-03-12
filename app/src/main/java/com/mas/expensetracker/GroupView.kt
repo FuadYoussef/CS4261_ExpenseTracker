@@ -57,6 +57,7 @@ class GroupView : AppCompatActivity() {
             rvexpenseList.layoutManager = LinearLayoutManager(this)
             var expenselist = gson.fromJson(it.value.toString(), ExpenseList::class.java)
             rvexpenseList.adapter = ExpenseAdapter(expenselist)
+
         }
     }
 
