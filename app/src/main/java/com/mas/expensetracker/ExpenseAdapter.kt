@@ -12,9 +12,9 @@ import com.mas.expensetracker.GroupView
 import com.mas.expensetracker.ManageExpenseActivity
 import com.mas.expensetracker.R
 
-class ExpenseAdapter(private val taskNames: ExpenseList) :
+class ExpenseAdapter(private val taskNames: ExpenseList, groupId: String) :
     RecyclerView.Adapter<ExpenseAdapter.ViewHolder>() {
-
+    private val groupId = groupId
     class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTaskName: TextView = itemView.findViewById(R.id.expense_name)
 
@@ -36,10 +36,13 @@ class ExpenseAdapter(private val taskNames: ExpenseList) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(taskNames[position])
+        viewHolder.bind(taskNames.get(position))
         viewHolder.itemView.setOnClickListener { v->
-            val expense = taskNames[position]
+            val expense = taskNames.get(position)
             val intent = Intent(v.context, ManageExpenseActivity::class.java)
+            intent.putExtra("groupId",groupId)
+            intent.putExtra("position",position.toString())
+            println("pos"+position)
             intent.putExtra("expense",expense)
             v.context.startActivity(intent)
         }

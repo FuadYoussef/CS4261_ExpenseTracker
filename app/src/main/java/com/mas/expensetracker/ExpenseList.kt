@@ -18,6 +18,9 @@ class ExpenseList {
     operator fun get(position: Int): Expense {
         return expenselist.get(position)
     }
+    operator fun set(position: Int, element: Expense): Expense {
+        return expenselist.set(position,element)
+    }
 
 }
 

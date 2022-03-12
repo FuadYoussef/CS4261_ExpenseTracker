@@ -2,7 +2,6 @@ package com.mas.expensetracker
 
 import ExpenseAdapter
 import ExpenseList
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -55,9 +54,11 @@ class GroupView : AppCompatActivity() {
             rvexpenseList = findViewById(R.id.expense_list_view)
             rvexpenseList.hasFixedSize();
             rvexpenseList.layoutManager = LinearLayoutManager(this)
+            val groupId = getIntent().getStringExtra("key").toString()
             var expenselist = gson.fromJson(it.value.toString(), ExpenseList::class.java)
-            rvexpenseList.adapter = ExpenseAdapter(expenselist)
-
+            if(expenselist!= null){
+                rvexpenseList.adapter = ExpenseAdapter(expenselist,groupId)
+            }
         }
     }
 
