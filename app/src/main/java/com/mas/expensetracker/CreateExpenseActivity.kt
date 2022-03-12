@@ -22,6 +22,7 @@ class CreateExpenseActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
     private lateinit var listOfParticipantExpenses: Map<String,Int>
+    private lateinit var expenseList: ExpenseList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,15 +53,18 @@ class CreateExpenseActivity : AppCompatActivity() {
             databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
                 val gson = Gson()
                 if(it.value!=null){
-                    val expenseJson: String = gson.toJson(expense)
-                    var expenseList = it.value.toString()
-                    expenseList+=expenseJson
-                    databaseRef.child("Groups").child(key).child("expenses").setValue(expenseList)
+                    Log.i("CreateExpense","Pulled" + it.value)
+                    var objectList = gson.fromJson(it.value.toString(), ExpenseList::class.java)
+                    Log.i("CreateExpense","Pulled" + objectList)
+                    objectList.add(expense)
+                    val expenseJson: String = gson.toJson(objectList)
+                    Log.i("CreateExpense","All Expenses" + expenseJson)
+                    databaseRef.child("Groups").child(key).child("expenses").setValue(expenseJson)
                 }else{
-                    val expenseJson: String = gson.toJson(expense)
-                    val expenseList: ArrayList<String> = arrayListOf()
-                    expenseList.add(expenseJson)
-                    databaseRef.child("Groups").child(key).child("expenses").setValue(expenseList)
+                    var objectList = ExpenseList()
+                    objectList.add(expense)
+                    val expenseJson: String = gson.toJson(objectList)
+                    databaseRef.child("Groups").child(key).child("expenses").setValue(expenseJson)
                 }
 
             }.addOnFailureListener {
