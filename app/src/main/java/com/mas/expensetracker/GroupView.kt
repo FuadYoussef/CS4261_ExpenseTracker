@@ -1,5 +1,6 @@
 package com.mas.expensetracker
 
+import ExpenseAdapter
 import ExpenseList
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +10,8 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -19,7 +22,7 @@ class GroupView : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
     private lateinit var groupParticipants: ArrayList<String>
-    private lateinit var expenseList: ArrayList<String>
+    private lateinit var rvexpenseList: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,19 +50,13 @@ class GroupView : AppCompatActivity() {
             // Handle any errors
         }
         databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
-            println(it.value.toString())
-//        databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
-//            if(it.value.toString()!=null){
-//                println(it.value.toString())
-//                val gson = GsonBuilder().setLenient().create()
-//                val Model= gson.fromJson(it.value.toString(),Array<Expense>::class.java).toList()
-//
-//                for(expense in Model){
-//                    println(expense)
-//                }
-//            }
-//        }.addOnFailureListener { e ->
-//            // Handle any errors
+            val gson = Gson()
+
+            rvexpenseList = findViewById(R.id.expense_list_view)
+            rvexpenseList.hasFixedSize();
+            rvexpenseList.layoutManager = LinearLayoutManager(this)
+            var expenselist = gson.fromJson(it.value.toString(), ExpenseList::class.java)
+            rvexpenseList.adapter = ExpenseAdapter(expenselist)
         }
     }
 
