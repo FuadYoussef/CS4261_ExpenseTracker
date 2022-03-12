@@ -1,6 +1,7 @@
 package com.mas.expensetracker
 
 import ExpenseList
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -67,7 +68,7 @@ class ManageExpenseActivity : AppCompatActivity() {
 
             }
         }
-//        var groupViewIntent = Intent(this, GroupView::class.java)
-//        startActivity(groupViewIntent)
+        var groupViewIntent = Intent(this, GroupView::class.java)
+        startActivity(groupViewIntent)
     }
 }
