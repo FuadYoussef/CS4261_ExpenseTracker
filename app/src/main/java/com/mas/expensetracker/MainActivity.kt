@@ -29,8 +29,17 @@ class MainActivity : AppCompatActivity() {
         var password = passwordET.text.toString()
         var userET = findViewById<EditText>(R.id.username_et)
         var username = userET.text.toString()
+        Toast.makeText(
+            this, "username is $username and password is $password",
+            Toast.LENGTH_SHORT
+        ).show();
         mAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener { task ->
+            System.out.println("made it to on complete listener")
             if (task.isSuccessful) {
+                Toast.makeText(
+                    this, "Authentication success.",
+                    Toast.LENGTH_SHORT
+                ).show();
                 var user = mAuth.currentUser
                 updateUI(user)
             } else {
