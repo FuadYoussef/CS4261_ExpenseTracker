@@ -32,6 +32,9 @@
         <activity android:name=".CreateExpenseActivity"
             android:exported="true">
         </activity>
+        <activity android:name=".ManageExpenseActivity"
+        android:exported="true">
+        </activity>
     </application>
     <uses-feature android:name="android.hardware.touchscreen"
         android:required="false" />
