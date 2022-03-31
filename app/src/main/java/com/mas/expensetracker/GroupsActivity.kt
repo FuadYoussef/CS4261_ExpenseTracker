@@ -19,6 +19,7 @@ class GroupsActivity: AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
     private lateinit var myGroups: ArrayList<String>
+    private lateinit var arrayAdapter: ArrayAdapter<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,7 @@ class GroupsActivity: AppCompatActivity() {
                     val arrayListType = object :
                         TypeToken<ArrayList<String>>() {}.type //https://www.bezkoder.com/kotlin-parse-json-gson/
                     myGroups = gson.fromJson<ArrayList<String>>(it.value.toString(), arrayListType)
-                    val arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myGroups)
+                    arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myGroups)
                     val listView = findViewById<ListView>(R.id.main_list_view)
                     listView.setAdapter(arrayAdapter)
 
@@ -43,6 +44,7 @@ class GroupsActivity: AppCompatActivity() {
                         val intent = Intent(this, GroupView::class.java)
                         Log.i("GroupActivity", key)
                         intent.putExtra("key",key) // Send group id to GroupView
+                        intent.putExtra("myGroups", myGroups)
                         startActivity(intent)
                     }
 
@@ -64,6 +66,13 @@ class GroupsActivity: AppCompatActivity() {
 
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(this::arrayAdapter.isInitialized) {
+            arrayAdapter.notifyDataSetChanged()
+        }
     }
 
     fun goToCreateScreen(view: View) {

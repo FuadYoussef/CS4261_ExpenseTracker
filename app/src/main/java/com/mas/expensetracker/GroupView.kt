@@ -3,19 +3,23 @@ package com.mas.expensetracker
 import ExpenseAdapter
 import ExpenseList
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
 
 class GroupView : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
@@ -28,8 +32,21 @@ class GroupView : AppCompatActivity() {
         setContentView(R.layout.activity_group_view)
         database = Firebase.database
         databaseRef = database.reference
+        var mAuth = FirebaseAuth.getInstance()
+        var currentUser = mAuth.currentUser
+        val screenSize = resources.configuration.screenLayout and
+                Configuration.SCREENLAYOUT_SIZE_MASK
+
+        val screenSizeInt: Int
+        screenSizeInt = when (screenSize) {
+            Configuration.SCREENLAYOUT_SIZE_LARGE -> 0
+            Configuration.SCREENLAYOUT_SIZE_NORMAL -> 1
+            Configuration.SCREENLAYOUT_SIZE_SMALL -> 2
+            else -> 3
+        }
         val key =
             getIntent().getStringExtra("key").toString() //Passed in groupId from selected Group
+        val myGroups = getIntent().getStringArrayListExtra("myGroups")
         Log.i("GroupView", "Received groupId " + key)
 
         databaseRef.child("Groups").child(key).child("participants").get().addOnSuccessListener {
@@ -40,11 +57,26 @@ class GroupView : AppCompatActivity() {
                 it.value.toString(),
                 arrayListType
             ) //ArrayList of Participants
+            if (currentUser != null && !groupParticipants.contains(currentUser.email) && myGroups != null) {
+                myGroups.remove(key)
+                databaseRef.child("users").child(currentUser.uid).child("Groups").setValue(myGroups)
+                //var groupsActivity = Intent(this, GroupsActivity::class.java)
+                //startActivity(groupsActivity)
+                this.finish()
+            }
             Log.i("GroupView", "Participants" + groupParticipants)
             val arrayAdapter: ArrayAdapter<String> =
                 ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, groupParticipants)
             val listView = findViewById<ListView>(R.id.participant_list_view)
             listView.setAdapter(arrayAdapter)
+            if (screenSizeInt == 0 || screenSizeInt == 3) {
+            listView.onItemClickListener =
+                OnItemClickListener { parent, view, position, id ->
+                    groupParticipants.removeAt(position)
+                    databaseRef.child("Groups").child(key).child("participants").setValue(groupParticipants)
+                    arrayAdapter.notifyDataSetChanged()
+                }
+            }
         }.addOnFailureListener { e ->
             // Handle any errors
         }
