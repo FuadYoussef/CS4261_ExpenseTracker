@@ -5,6 +5,7 @@ import ExpenseList
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
@@ -13,12 +14,14 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.*
 
 
 class GroupView : AppCompatActivity() {
@@ -26,6 +29,7 @@ class GroupView : AppCompatActivity() {
     private lateinit var databaseRef: DatabaseReference
     private lateinit var groupParticipants: ArrayList<String>
     private lateinit var rvexpenseList: RecyclerView
+    private lateinit var classKey: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +50,14 @@ class GroupView : AppCompatActivity() {
         }
         val key =
             getIntent().getStringExtra("key").toString() //Passed in groupId from selected Group
+        classKey = key
         val myGroups = getIntent().getStringArrayListExtra("myGroups")
         Log.i("GroupView", "Received groupId " + key)
+
+        if(screenSizeInt == 1 || screenSizeInt == 2) {
+            val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+            fab.visibility = View.INVISIBLE
+        }
 
         databaseRef.child("Groups").child(key).child("participants").get().addOnSuccessListener {
             val gson = Gson()
@@ -108,5 +118,58 @@ class GroupView : AppCompatActivity() {
         createExpenseActivity.putExtra("key",key)
         createExpenseActivity.putStringArrayListExtra("participants",groupParticipants)
         startActivity(createExpenseActivity)
+    }
+
+    fun printAudit(view: View) {
+        var root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+
+        //if you want to create a sub-dir
+
+        //if you want to create a sub-dir
+        root = File(root, "ExpenseTracker")
+        root.mkdir()
+
+        // select the name for your file
+        root = File(root, "audit.txt")
+
+        try {
+            var fout = FileOutputStream(root);
+            val osw = OutputStreamWriter(fout)
+            try {
+                databaseRef.child("Groups").child(classKey).child("expenses").get().addOnSuccessListener {
+                    val gson = Gson()
+
+                    rvexpenseList = findViewById(R.id.expense_list_view)
+                    rvexpenseList.hasFixedSize();
+                    rvexpenseList.layoutManager = LinearLayoutManager(this)
+
+                    osw.write(it.toString())
+                    osw.flush()
+                    osw.close()
+                    fout.close();
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace();
+
+            var bool = false
+            try {
+                // try to create the file
+                bool = root.createNewFile()
+            } catch (e1: IOException) {
+                e1.printStackTrace();
+            }
+
+            if (bool){
+                // call the method again
+                printAudit(view)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace();
+        }
     }
 }
