@@ -53,6 +53,7 @@ class CreateGroupActivity: AppCompatActivity() {
             databaseRef.child("Groups").child(key.toString()).child("groupName").setValue(groupName)
             databaseRef.child("Groups").child(key.toString()).child("groupDescription").setValue(groupDescription)
             databaseRef.child("Groups").child(key.toString()).child("groupKey").setValue(key.toString())
+            databaseRef.child("Groups").child(key.toString()).child("groupCreatorEmail").setValue(currentUser.email.toString())
             myGroups.add(key.toString())
             val gson = Gson()
             databaseRef.child("users").child(currentUser.uid).child("Groups").setValue(gson.toJson(myGroups))
