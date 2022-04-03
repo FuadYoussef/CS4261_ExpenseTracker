@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -52,7 +53,12 @@ class GroupView : AppCompatActivity() {
             getIntent().getStringExtra("key").toString() //Passed in groupId from selected Group
         classKey = key
         val myGroups = getIntent().getStringArrayListExtra("myGroups")
-        Log.i("GroupView", "Received groupId " + key)
+
+        val textView : TextView = findViewById(R.id.text_owner)
+        databaseRef.child("Groups").child(key).child("groupCreatorEmail").get().addOnSuccessListener{
+            val owner = it.value.toString()
+            textView.text= "Group Owner: " + owner
+        }
 
         if(screenSizeInt == 1 || screenSizeInt == 2) {
             val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
@@ -107,6 +113,11 @@ class GroupView : AppCompatActivity() {
     fun goToGroupsScreen(view: View) {
         var groupsActivity = Intent(this, GroupsActivity::class.java)
         startActivity(groupsActivity)
+    }
+
+    fun goToPayScreen(view: View) {
+        var payActivity = Intent(this, payActivity::class.java)
+        startActivity(payActivity)
     }
 
     fun goToCreateExpenseScreen(view: View) {
