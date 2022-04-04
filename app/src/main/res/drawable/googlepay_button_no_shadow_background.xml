@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Sampled from https://github.com/LucasPM97/GPaySample -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:drawable="@drawable/googlepay_button_no_shadow_background_image" />
+</selector>
+

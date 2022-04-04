@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Sampled from https://github.com/LucasPM97/GPaySample -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:drawable="@drawable/selected_button_background"
+        android:state_checked="true"
+        android:state_pressed="true" />
+    <item
+        android:drawable="@drawable/selected_button_background"
+        android:state_pressed="true" />
+    <item
+        android:drawable="@drawable/selected_button_background"
+        android:state_checked="true" />
+    <item
+        android:drawable="@drawable/enabled_button_background" />
+</selector>

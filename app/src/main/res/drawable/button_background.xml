@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Sampled from https://github.com/LucasPM97/GPaySample -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_enabled="false"
+        android:drawable="@drawable/disabled_button_background" />
+    <item
+        android:state_pressed="true"
+        android:state_enabled="true"
+        android:drawable="@drawable/enabled_button_background" />
+    <item
+        android:state_focused="true"
+        android:state_enabled="true"
+        android:drawable="@drawable/enabled_button_background" />
+    <item
+        android:state_enabled="true"
+        android:drawable="@drawable/enabled_button_background" />
+</selector>

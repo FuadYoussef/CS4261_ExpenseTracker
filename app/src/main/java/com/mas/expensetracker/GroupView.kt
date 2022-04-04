@@ -23,6 +23,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.*
+import java.security.Key
 
 
 class GroupView : AppCompatActivity() {
@@ -116,7 +117,9 @@ class GroupView : AppCompatActivity() {
     }
 
     fun goToPayScreen(view: View) {
+        val key = getIntent().getStringExtra("key").toString()
         var payActivity = Intent(this, payActivity::class.java)
+        payActivity.putExtra("key",key)
         startActivity(payActivity)
     }
 
