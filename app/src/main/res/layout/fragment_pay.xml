@@ -114,4 +114,23 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="414dp"
+        android:layout_height="108dp"
+        android:src="@drawable/create_group_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pay Expense"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="62dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
