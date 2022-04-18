@@ -17,14 +17,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/log_in"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Already have an account？"
+        android:text="@string/already_have_an_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +42,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.938"
-        app:srcCompat="@drawable/ic_round_email" />
+        app:srcCompat="@drawable/ic_round_email"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -53,7 +55,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView8"
         app:layout_constraintVertical_bias="0.008"
-        app:srcCompat="@drawable/bxs_lock" />
+        app:srcCompat="@drawable/bxs_lock"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -88,7 +91,7 @@
         android:hint="@string/username"
         android:minHeight="48dp"
         android:textColor="#B4808080"
-        android:textColorHint="#B5B5B5"
+        android:textColorHint="#757575"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/password_et"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +123,7 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/verify_password"
         android:minHeight="48dp"
-        android:textColorHint="#B5B5B5"
+        android:textColorHint="#757575"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/create_account_label"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +140,7 @@
         android:hint="@string/password"
         android:minHeight="48dp"
         android:textColor="#E6CCCCCC"
-        android:textColorHint="#B5B5B5"
+        android:textColorHint="#757575"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/verify_password_et"
         app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +157,7 @@
 
         android:minHeight="48dp"
 
-        android:text="Log in"
+        android:text="@string/log_in"
         android:textColor="#6E7EFC"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
