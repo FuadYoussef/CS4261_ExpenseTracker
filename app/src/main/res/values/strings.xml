@@ -16,4 +16,6 @@
     <string name="create_or_join_group">Create/Join Group</string>
     <string name="join_group_hint">Group Key</string>
     <string name="join_group">Join Group</string>
+    <string name="already_have_an_account">Already have an account？</string>
+    <string name="log_in">Log in</string>
 </resources>

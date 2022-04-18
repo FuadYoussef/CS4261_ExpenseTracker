@@ -40,7 +40,6 @@
         android:hint="Expense Name"
         android:minHeight="48dp"
         android:textColor="#B5B5B5"
-        android:textColorHint="#757575"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/create_expense_button"
         app:layout_constraintEnd_toEndOf="parent"
