@@ -20,9 +20,11 @@
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_create_expense.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_create_join_group.xml" value="0.2921195652173913" />
         <entry key="app/src/main/res/layout/activity_expense_view.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/activity_expenses.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_group_view.xml" value="0.34010416666666665" />
+        <entry key="app/src/main/res/layout/activity_groups.xml" value="0.2921195652173913" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/buy_with_googlepay_button.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/expense_list_name.xml" value="0.34010416666666665" />
