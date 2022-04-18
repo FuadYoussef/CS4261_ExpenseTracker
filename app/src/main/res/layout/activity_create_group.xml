@@ -80,12 +80,12 @@
         android:layout_height="25dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="56dp"
-        android:tint="#192059"
         app:layout_constraintEnd_toStartOf="@+id/group_name_et"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/pencil" />
+        app:srcCompat="@drawable/pencil"
+        app:tint="#192059" />
 
     <ImageView
         android:id="@+id/imageView3"

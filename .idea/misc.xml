@@ -19,10 +19,14 @@
         <entry key="app/src/main/res/drawable/pay_radio_button.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/rounded_layout.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/selected_button_background.xml" value="0.2175" />
+
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.19808929443359377" />
         <entry key="app/src/main/res/layout/activity_create_expense.xml" value="0.23862457275390628" />
         <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.2780181884765626" />
         <entry key="app/src/main/res/layout/activity_create_join_group.xml" value="0.25396575927734377" />
+        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_create_expense.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_expense_view.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/activity_expenses.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_group_view.xml" value="0.34010416666666665" />

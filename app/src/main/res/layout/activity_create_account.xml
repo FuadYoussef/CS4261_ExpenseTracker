@@ -7,55 +7,160 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CreateAccountActivity">
 
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="413dp"
+        android:layout_height="868dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/log_in"
+        tools:ignore="ImageContrastCheck" />
+
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/create_account"
-        android:id="@+id/login_label"
-        app:layout_constraintBottom_toTopOf="@id/email_et"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="40dp"
+        android:text="Already have an account？"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_account_label" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="18dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/password_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.938"
+        app:srcCompat="@drawable/ic_round_email" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="18dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_account_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.008"
+        app:srcCompat="@drawable/bxs_lock" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="18dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_account_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.632"
+        app:srcCompat="@drawable/bxs_lock" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="200dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29000002"
+        app:srcCompat="@drawable/split_easier___1_"
+        android:contentDescription="TODO" />
 
     <EditText
         android:id="@+id/email_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="32dp"
         android:hint="@string/username"
+        android:minHeight="48dp"
+        android:textColor="#B4808080"
+        android:textColorHint="#B5B5B5"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/password_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.495"
         tools:layout_editor_absoluteX="0dp" />
 
-    <EditText
-        android:id="@+id/password_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/password"
-        app:layout_constraintBottom_toTopOf="@id/verify_password_et"
+    <Button
+        android:id="@+id/create_account_label"
+        android:layout_width="339dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:backgroundTint="#192059"
+        android:onClick="createAccount"
+        android:text="@string/create_account"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.81" />
 
     <EditText
         android:id="@+id/verify_password_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="32dp"
         android:hint="@string/verify_password"
+        android:minHeight="48dp"
+        android:textColorHint="#B5B5B5"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/create_account_label"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955" />
 
+    <EditText
+        android:id="@+id/password_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/password"
+        android:minHeight="48dp"
+        android:textColor="#E6CCCCCC"
+        android:textColorHint="#B5B5B5"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/verify_password_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.949" />
 
-    <Button
-        android:id="@+id/create_account_label"
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
-        android:text="@string/create_account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:onClick="createAccount"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_marginTop="40dp"
+        android:minWidth="48dp"
+
+        android:minHeight="48dp"
+
+        android:text="Log in"
+        android:textColor="#6E7EFC"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/create_account_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

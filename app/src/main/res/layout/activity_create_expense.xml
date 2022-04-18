@@ -7,57 +7,115 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CreateExpenseActivity">
 
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="433dp"
+        android:layout_height="285dp"
+        android:layout_marginBottom="536dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/create" />
+
     <TextView
+        android:id="@+id/create_expense_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create New Expense"
-        android:id="@+id/create_expense_label"
-        app:layout_constraintBottom_toTopOf="@id/expense_name_et"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/expense_name_et2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395" />
 
     <EditText
         android:id="@+id/expense_name_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:hint="Expense Name"
-        app:layout_constraintBottom_toTopOf="@+id/expense_description_et"
+        android:minHeight="48dp"
+        android:textColor="#B5B5B5"
+        android:textColorHint="#757575"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_expense_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.829"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.47000003" />
+
+    <EditText
+        android:id="@+id/expense_name_et2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Payer"
+        android:minHeight="48dp"
+        android:textColor="#B5B5B5"
+        android:textColorHint="#B5B5B5"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_expense_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.345" />
 
     <EditText
         android:id="@+id/expense_description_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Expense Discription"
-        app:layout_constraintBottom_toTopOf="@+id/expense_total_et"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Notes"
+        android:minHeight="48dp"
+        android:textColorHint="#B5B5B5"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_expense_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
-        tools:layout_editor_absoluteX="0dp" />
-
+        app:layout_constraintVertical_bias="0.6" />
 
     <EditText
         android:id="@+id/expense_total_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:hint="Expense Total"
-        app:layout_constraintBottom_toBottomOf="@+id/create_expense_button"
+        android:minHeight="48dp"
+        android:textColorHint="#B5B5B5"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_expense_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845"
-        tools:layout_editor_absoluteX="-16dp" />
+        app:layout_constraintVertical_bias="0.73" />
 
     <Button
         android:id="@+id/create_expense_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="328dp"
+        android:layout_width="353dp"
+        android:layout_height="58dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:backgroundTint="#192059"
         android:onClick="createExpense"
         android:text="Create Expense"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

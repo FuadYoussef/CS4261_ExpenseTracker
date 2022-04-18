@@ -6,103 +6,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".GroupView">
 
-    <ListView
-        android:id="@+id/participant_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/text_expenses"
-        app:layout_constraintTop_toBottomOf="@id/back_button"
-        app:layout_constraintVertical_bias="0.065"
-        tools:layout_editor_absoluteX="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/expense_list_view"
-        android:layout_width="411dp"
-        android:layout_height="279dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="327dp"
+        android:layout_height="197dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_expenses" />
-
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="94dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:onClick="goToGroupsScreen"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
         android:id="@+id/create_expense_button"
         android:layout_width="145dp"
-        android:layout_height="56dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#192059"
         android:onClick="goToCreateExpenseScreen"
         android:text="Create Expense"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.957" />
 
     <Button
         android:id="@+id/pay_expense_button"
-        android:layout_width="113dp"
-        android:layout_height="62dp"
+        android:layout_width="159dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="#192059"
         android:onClick="goToPayScreen"
-        android:text="Pay Expense"
+        android:text="pay_expense"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintHorizontal_bias="0.009"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintVertical_bias="0.957" />
 
     <TextView
         android:id="@+id/text_members"
-        android:layout_width="103dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="56dp"
-        android:text="Group Members"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="44dp"
+        android:text="climbing_club"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text_owner"
-        android:layout_width="270dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="4dp"
-        android:text="Owner"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile"
+        android:contentDescription="todo" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="42dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/more_horizontal__1_" />
 
     <TextView
-        android:id="@+id/text_expenses"
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="308dp"
-        android:text="Expenses"
+        android:layout_marginStart="32dp"
+        android:text="group_member"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.05" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+    <TextView
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="printAudit"
-        app:srcCompat="@android:drawable/ic_menu_upload"
+        android:layout_marginStart="32dp"
+        android:text="expenses"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="227dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
