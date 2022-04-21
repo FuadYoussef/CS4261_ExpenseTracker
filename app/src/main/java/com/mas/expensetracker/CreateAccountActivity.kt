@@ -57,4 +57,9 @@ class CreateAccountActivity: AppCompatActivity() {
 
         }
     }
+
+    fun navigateToLogin(view: View) {
+        var loginIntent = Intent(this, MainActivity::class.java)
+        startActivity(loginIntent)
+    }
 }

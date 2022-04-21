@@ -17,6 +17,8 @@
         <entry key="app/src/main/res/layout/alert_dialog_box.xml" value="0.40963855421686746" />
         <entry key="app/src/main/res/layout/expense_list_name.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/fragment_pay.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/main_activity.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/main_fragment.xml" value="0.24635416666666668" />
       </map>
     </option>
   </component>
