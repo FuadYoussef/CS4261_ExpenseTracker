@@ -163,10 +163,30 @@ class GroupView : AppCompatActivity(), CustomDialog.OnInputListener {
             try {
                 databaseRef.child("Groups").child(classKey).child("expenses").get().addOnSuccessListener {
                     val gson = Gson()
-                    rvexpenseList = findViewById(R.id.expense_list_view)
-                    rvexpenseList.hasFixedSize();
-                    rvexpenseList.layoutManager = LinearLayoutManager(this)
-                    osw.write(it.toString())
+                    val groupId = getIntent().getStringExtra("key").toString()
+                    var expenselist = gson.fromJson(it.value.toString(), ExpenseList::class.java)
+                    for (e in  expenselist.expenselist) {
+                        osw.write("**********************")
+                        osw.write("\n")
+                        osw.write("Expense Name: " + e.expenseName)
+                        osw.write("\n")
+                        osw.write("Expense Description: " + e.expenseDescription)
+                        osw.write("\n")
+                        osw.write("Expense Total: " + e.expenseTotal)
+                        osw.write("\n")
+                        osw.write("Participant Details:\n")
+                        for (p in e.participantExpenses.entries.iterator()) {
+                            osw.write("-------------------\n")
+                            osw.write("${p} owes ${e.participantExpenses}\n")
+                            /*if (p.hasPayed) {
+                                osw.write("${p} has paid\n")
+                            } else {
+                                osw.write("${p} has not paid\n")
+                            }*/
+                        }
+                        osw.write("**********************")
+                    }
+                    //osw.write(it.toString())
                     osw.flush()
                     osw.close()
                     fout.close();
