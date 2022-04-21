@@ -15,7 +15,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
@@ -26,31 +25,36 @@ import java.io.*
 import java.security.Key
 
 
-class GroupView : AppCompatActivity() {
+class GroupView : AppCompatActivity(), CustomDialog.OnInputListener {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
     private lateinit var groupParticipants: ArrayList<String>
     private lateinit var rvexpenseList: RecyclerView
     private lateinit var classKey: String
+    private lateinit var listView: ListView
+    private var screenSizeInt = 1
+    private lateinit var arrayAdapter: ArrayAdapter<String>
+    private lateinit var key: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_view)
         database = Firebase.database
         databaseRef = database.reference
+        var clubNameTV = findViewById<TextView>(R.id.text_members)
         var mAuth = FirebaseAuth.getInstance()
         var currentUser = mAuth.currentUser
         val screenSize = resources.configuration.screenLayout and
                 Configuration.SCREENLAYOUT_SIZE_MASK
 
-        val screenSizeInt: Int
+
         screenSizeInt = when (screenSize) {
             Configuration.SCREENLAYOUT_SIZE_LARGE -> 0
             Configuration.SCREENLAYOUT_SIZE_NORMAL -> 1
             Configuration.SCREENLAYOUT_SIZE_SMALL -> 2
             else -> 3
         }
-        val key =
+        key =
             getIntent().getStringExtra("key").toString() //Passed in groupId from selected Group
         classKey = key
         val myGroups = getIntent().getStringArrayListExtra("myGroups")
@@ -61,9 +65,13 @@ class GroupView : AppCompatActivity() {
             textView.text= "Group Owner: " + owner
         }
 
-        if(screenSizeInt == 1 || screenSizeInt == 2) {
-            val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
-            fab.visibility = View.INVISIBLE
+//        if(screenSizeInt == 1 || screenSizeInt == 2) {
+//            val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+//            fab.visibility = View.INVISIBLE
+//        }
+
+        databaseRef.child("Groups").child(key).child("groupName").get().addOnSuccessListener {
+            clubNameTV.text = it.value.toString()
         }
 
         databaseRef.child("Groups").child(key).child("participants").get().addOnSuccessListener {
@@ -82,17 +90,16 @@ class GroupView : AppCompatActivity() {
                 this.finish()
             }
             Log.i("GroupView", "Participants" + groupParticipants)
-            val arrayAdapter: ArrayAdapter<String> =
-                ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, groupParticipants)
-            val listView = findViewById<ListView>(R.id.participant_list_view)
+            arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, groupParticipants)
+            listView = findViewById<ListView>(R.id.recyclerView2)
             listView.setAdapter(arrayAdapter)
             if (screenSizeInt == 0 || screenSizeInt == 3) {
-            listView.onItemClickListener =
-                OnItemClickListener { parent, view, position, id ->
-                    groupParticipants.removeAt(position)
-                    databaseRef.child("Groups").child(key).child("participants").setValue(groupParticipants)
-                    arrayAdapter.notifyDataSetChanged()
-                }
+                listView.onItemClickListener =
+                    OnItemClickListener { parent, view, position, id ->
+                        groupParticipants.removeAt(position)
+                        databaseRef.child("Groups").child(key).child("participants").setValue(groupParticipants)
+                        arrayAdapter.notifyDataSetChanged()
+                    }
             }
         }.addOnFailureListener { e ->
             // Handle any errors
@@ -134,16 +141,20 @@ class GroupView : AppCompatActivity() {
         startActivity(createExpenseActivity)
     }
 
-    fun printAudit(view: View) {
+    override fun manageGroup() {
+        listView.onItemClickListener =
+            OnItemClickListener { parent, view, position, id ->
+                groupParticipants.removeAt(position)
+                databaseRef.child("Groups").child(key).child("participants").setValue(groupParticipants)
+                arrayAdapter.notifyDataSetChanged()
+            }
+    }
+
+    override fun printAudit() {
         var root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 
-        //if you want to create a sub-dir
-
-        //if you want to create a sub-dir
         root = File(root, "ExpenseTracker")
         root.mkdir()
-
-        // select the name for your file
         root = File(root, "audit.txt")
 
         try {
@@ -152,11 +163,9 @@ class GroupView : AppCompatActivity() {
             try {
                 databaseRef.child("Groups").child(classKey).child("expenses").get().addOnSuccessListener {
                     val gson = Gson()
-
                     rvexpenseList = findViewById(R.id.expense_list_view)
                     rvexpenseList.hasFixedSize();
                     rvexpenseList.layoutManager = LinearLayoutManager(this)
-
                     osw.write(it.toString())
                     osw.flush()
                     osw.close()
@@ -165,25 +174,30 @@ class GroupView : AppCompatActivity() {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-
-
         } catch (e: FileNotFoundException) {
             e.printStackTrace();
 
             var bool = false
             try {
-                // try to create the file
                 bool = root.createNewFile()
             } catch (e1: IOException) {
                 e1.printStackTrace();
             }
-
             if (bool){
                 // call the method again
-                printAudit(view)
+                printAudit()
             }
         } catch (e: IOException) {
             e.printStackTrace();
         }
     }
+
+    fun manageAccount(view: View) {
+        if (screenSizeInt == 0 || screenSizeInt == 3) {
+            val dialog = CustomDialog()
+            dialog.show(supportFragmentManager, "CustomDialog")
+        }
+    }
+
+
 }
