@@ -177,7 +177,7 @@ class GroupView : AppCompatActivity(), CustomDialog.OnInputListener {
                         osw.write("Participant Details:\n")
                         for (p in e.participantExpenses.entries.iterator()) {
                             osw.write("-------------------\n")
-                            osw.write("${p} owes ${e.participantExpenses}\n")
+                            osw.write("${p.key} owes ${p.value}\n")
                             /*if (p.hasPayed) {
                                 osw.write("${p} has paid\n")
                             } else {
