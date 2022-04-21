@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_create_expense.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_create_join_group.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/activity_expense_view.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/activity_expenses.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_group_view.xml" value="0.34010416666666665" />

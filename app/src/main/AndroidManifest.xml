@@ -20,6 +20,9 @@
         <activity android:name=".CreateAccountActivity"
             android:exported="true">
         </activity>
+        <activity android:name=".JoinGroupActivity"
+            android:exported="true">
+        </activity>
         <activity android:name=".GroupsActivity"
             android:exported="true">
         </activity>

@@ -85,9 +85,10 @@ class GroupView : AppCompatActivity(), CustomDialog.OnInputListener {
             if (currentUser != null && !groupParticipants.contains(currentUser.email) && myGroups != null) {
                 myGroups.remove(key)
                 databaseRef.child("users").child(currentUser.uid).child("Groups").setValue(myGroups)
-                //var groupsActivity = Intent(this, GroupsActivity::class.java)
-                //startActivity(groupsActivity)
+                var groupsActivity = Intent(this, GroupsActivity::class.java)
                 this.finish()
+                startActivity(groupsActivity)
+
             }
             Log.i("GroupView", "Participants" + groupParticipants)
             arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, groupParticipants)

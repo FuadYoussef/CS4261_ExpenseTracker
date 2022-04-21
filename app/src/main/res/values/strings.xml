@@ -18,4 +18,5 @@
     <string name="join_group">Join Group</string>
     <string name="already_have_an_account">Already have an account？</string>
     <string name="log_in">Log in</string>
+    <string name="join_group_by_key">Join Group Via Key</string>
 </resources>

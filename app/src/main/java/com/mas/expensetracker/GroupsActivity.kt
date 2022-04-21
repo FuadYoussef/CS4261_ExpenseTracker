@@ -77,6 +77,7 @@ class GroupsActivity: AppCompatActivity() {
 
     fun goToCreateScreen(view: View) {
         var createGroup = Intent(this, CreateGroupActivity::class.java)
+        this.finish()
         startActivity(createGroup)
     }
 }
