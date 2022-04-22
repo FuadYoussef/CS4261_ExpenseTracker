@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginEnd="32dp"
+        android:inputType="textPassword"
         android:hint="@string/password"
         android:minHeight="48dp"
         android:textColorHint="#B5B5B5"
