@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 import com.mas.expensetracker.ui.completePay.CompletePayFragment
 import kotlinx.android.synthetic.main.fragment_complete_pay.*
 import org.json.JSONObject

@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/fuady/StudioProjects/CS4261_ExpenseTracker/app/src/main/res/layout/activity_group_view.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/fuady/StudioProjects/CS4261_ExpenseTracker/app/src/main/res/xml/provider_paths.xml" value="0.11302083333333333" />
+        <entry key="app/src/main/res/drawable/googlepay_button_overlay.xml" value="0.2355" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_create_expense.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.25" />
@@ -16,9 +17,12 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/alert_dialog_box.xml" value="0.40963855421686746" />
         <entry key="app/src/main/res/layout/expense_list_name.xml" value="0.34010416666666665" />
+        <entry key="app/src/main/res/layout/fragment_complete_pay.xml" value="0.2128623188405797" />
         <entry key="app/src/main/res/layout/fragment_pay.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/googlepay_button.xml" value="0.2128623188405797" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/nav_host_fragment.xml" value="0.2128623188405797" />
       </map>
     </option>
   </component>

@@ -22,7 +22,7 @@ class CreateExpenseActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
     private lateinit var listOfParticipantExpenses: Map<String,Int>
-    private lateinit var expenseList: ExpenseList
+    private lateinit var listOfHasPaid: Map<String,Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,23 +42,20 @@ class CreateExpenseActivity : AppCompatActivity() {
 
         if(participants!=null){
             listOfParticipantExpenses = participants.associateWith { 0 }
-            Log.i("CreateExpense","Created listOfParticipantExpenses " + listOfParticipantExpenses)
-
+            listOfHasPaid = participants.associateWith { 0 }
 
             val expenseName = findViewById<EditText>(R.id.expense_name_et).text.toString()
             val expenseDescription = findViewById<EditText>(R.id.expense_description_et).text.toString()
             val expenseTotal = findViewById<EditText>(R.id.expense_total_et).text.toString().toInt()
             val expense = Expense(expenseName,expenseDescription,expenseTotal,listOfParticipantExpenses)
 
+
             databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
                 val gson = Gson()
                 if(it.value!=null){
-                    Log.i("CreateExpense","Pulled" + it.value)
                     var objectList = gson.fromJson(it.value.toString(), ExpenseList::class.java)
-                    Log.i("CreateExpense","Pulled" + objectList)
                     objectList.add(expense)
                     val expenseJson: String = gson.toJson(objectList)
-                    Log.i("CreateExpense","All Expenses" + expenseJson)
                     databaseRef.child("Groups").child(key).child("expenses").setValue(expenseJson)
                 }else{
                     var objectList = ExpenseList()

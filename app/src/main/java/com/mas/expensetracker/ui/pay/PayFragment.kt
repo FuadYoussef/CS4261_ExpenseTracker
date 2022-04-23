@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
@@ -45,15 +46,20 @@ class PayFragment : Fragment() {
 
 
         setObservable()
-
+        //var custom = 0
         optionList.setOnCheckedChangeListener{ group, checkedId ->
+//                while(checkedId==price4.id && specific_amount?.text.isNullOrEmpty()){
+//
+//                }
+//                custom = specific_amount?.text.toString().toInt()
                 val newPrice =  when(checkedId){
                     price1.id-> 1
-                    price2.id-> 2
-                    price3.id-> 5
-                    price4.id-> 10
+                    price2.id-> 5
+                    price3.id-> 10
+                    price4.id-> specific_amount?.text.toString().toInt()
                     else -> 0
                 }
+
             viewModel.setMountToPay(newPrice)
             confirm_button.isEnabled = true
         }
@@ -70,9 +76,9 @@ class PayFragment : Fragment() {
         val price:MutableLiveData<Int?>? = viewModel.getMountToPay()
 
         price?.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                priceMount_text.text = "$ ${it.toString()}"
-                mountToPay = it
+                it?.let {
+                    priceMount_text.text = "$ ${it.toString()}"
+                    mountToPay = it
             }
         })
     }

@@ -30,8 +30,8 @@ class ManageExpenseActivity : AppCompatActivity() {
         val textView : TextView = findViewById(R.id.managed_expense_name)
         textView.text= expense.expenseName
 
-        var participantExpenses = expense.participantExpenses //List of (email,total) for each participant
-        println(participantExpenses.get("test@mikunakano.com"))
+//        var participantExpenses = expense.participantExpenses //List of (email,total) for each participant
+//        println(participantExpenses.get("test@mikunakano.com"))
 //        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, participantExpenses)
 //        val listView = findViewById<ListView>(R.id.participant_expense_list_view)
 //        listView.setAdapter(arrayAdapter)
