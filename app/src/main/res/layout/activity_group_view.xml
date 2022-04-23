@@ -141,5 +141,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="71dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="40dp"
+        android:onClick="refreshView"
+        android:text="Refresh"
+        android:textSize="20px"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

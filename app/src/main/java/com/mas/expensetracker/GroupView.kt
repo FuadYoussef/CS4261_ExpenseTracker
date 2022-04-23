@@ -123,7 +123,12 @@ class GroupView : AppCompatActivity(), CustomDialog.OnInputListener {
         var groupsActivity = Intent(this, GroupsActivity::class.java)
         startActivity(groupsActivity)
     }
-
+    fun refreshView(view: View){
+        var groupViewIntent = Intent(this, GroupView::class.java)
+        groupViewIntent.putExtra("key",key)
+        finish()
+        startActivity(groupViewIntent)
+    }
     fun goToPayScreen(view: View) {
         val key = getIntent().getStringExtra("key").toString()
         var payActivity = Intent(this, payActivity::class.java)
