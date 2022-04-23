@@ -21,15 +21,17 @@
         android:id="@+id/create_expense_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Create New Expense"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/expense_name_et2"
+        app:layout_constraintBottom_toTopOf="@+id/expense_name_et"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395" />
+        app:layout_constraintVertical_bias="0.012" />
 
     <EditText
         android:id="@+id/expense_name_et"
@@ -47,24 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.47000003" />
-
-    <EditText
-        android:id="@+id/expense_name_et2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Payer"
-        android:minHeight="48dp"
-        android:textColor="#B5B5B5"
-        android:textColorHint="#B5B5B5"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/create_expense_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.345" />
 
     <EditText
         android:id="@+id/expense_description_et"

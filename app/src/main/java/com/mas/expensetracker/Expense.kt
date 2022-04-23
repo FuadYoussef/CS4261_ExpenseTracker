@@ -7,8 +7,8 @@ class Expense(
      expenseName: String,
      expenseDescription: String,
      expenseTotal: Int,
-     participantExpenses: Map<String, Int>
-     //hasPaid: Map<String,Int>
+     participantExpenses: Map<String, Int>,
+     hasPaid: Map<String,Int>
     ): Serializable {
     @SerializedName("expenseName")
     var expenseName: String = expenseName
@@ -34,10 +34,10 @@ class Expense(
         set(value) {
             field = value
         }
-//    @SerializedName("participantExpenses")
-//    var hasPaid: Map<String, Int> = hasPaid
-//        get() = field                     // getter
-//        set(value) {
-//            field = value
-//        }
+    @SerializedName("hasPaid")
+    var hasPaid: Map<String, Int> = hasPaid
+        get() = field                     // getter
+        set(value) {
+            field = value
+        }
 }

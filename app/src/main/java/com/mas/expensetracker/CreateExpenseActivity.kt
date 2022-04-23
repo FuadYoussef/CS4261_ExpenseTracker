@@ -47,7 +47,7 @@ class CreateExpenseActivity : AppCompatActivity() {
             val expenseName = findViewById<EditText>(R.id.expense_name_et).text.toString()
             val expenseDescription = findViewById<EditText>(R.id.expense_description_et).text.toString()
             val expenseTotal = findViewById<EditText>(R.id.expense_total_et).text.toString().toInt()
-            val expense = Expense(expenseName,expenseDescription,expenseTotal,listOfParticipantExpenses)
+            val expense = Expense(expenseName,expenseDescription,expenseTotal,listOfParticipantExpenses,listOfHasPaid)
 
 
             databaseRef.child("Groups").child(key).child("expenses").get().addOnSuccessListener {
