@@ -7,7 +7,7 @@
         <entry key="..\:/Users/fuady/StudioProjects/CS4261_ExpenseTracker/app/src/main/res/xml/provider_paths.xml" value="0.11302083333333333" />
         <entry key="app/src/main/res/drawable/googlepay_button_overlay.xml" value="0.2355" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_create_expense.xml" value="0.34010416666666665" />
+        <entry key="app/src/main/res/layout/activity_create_expense.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_group.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_join_group.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/activity_expense_view.xml" value="0.28020833333333334" />
