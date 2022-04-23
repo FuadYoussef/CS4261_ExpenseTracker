@@ -2,6 +2,7 @@
 
 package com.mas.expensetracker
 
+import ExpenseList
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,17 +14,20 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.gms.wallet.AutoResolveHelper
 import com.google.android.gms.wallet.PaymentData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.mas.expensetracker.ui.completePay.CompletePayFragment
 import kotlinx.android.synthetic.main.fragment_complete_pay.*
 import org.json.JSONObject
+import java.time.LocalDateTime
 
 class payActivity : AppCompatActivity() {
-
+    lateinit var mAuth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
     lateinit var navController:NavController;
@@ -78,7 +82,29 @@ class payActivity : AppCompatActivity() {
 
             database = Firebase.database
             databaseRef = database.reference
+            mAuth = FirebaseAuth.getInstance()
             val key = getIntent().getStringExtra("key").toString()
+            val gson = Gson()
+            var currentUser = mAuth.currentUser
+            databaseRef.child("Groups").child(key).child("payments").get().addOnSuccessListener {
+                if(it.value!=null) {
+                    val arrayListType = object :
+                        TypeToken<ArrayList<String>>() {}.type
+                    var payments = gson.fromJson<ArrayList<String>>(it.value.toString(), arrayListType)
+                    if (currentUser != null) {
+                        payments.add(currentUser.email.toString())
+                    }
+                    val paymentJson: String = gson.toJson(payments)
+                    databaseRef.child("Groups").child(key).child("payments").setValue(paymentJson)
+                }else{
+                    var payments = ArrayList<String>()
+                    if (currentUser != null) {
+                        payments.add(currentUser.email.toString())
+                    }
+                    val paymentJson: String = gson.toJson(payments)
+                    databaseRef.child("Groups").child(key).child("payments").setValue(paymentJson)
+                }
+            }
             var groupViewIntent = Intent(this, GroupView::class.java)
             groupViewIntent.putExtra("key",key)
             startActivity(groupViewIntent)
